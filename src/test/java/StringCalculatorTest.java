@@ -30,6 +30,10 @@ public class StringCalculatorTest {
         assertEquals(26, stringCalculator.add("1,2,5,4,6,8"));
         assertEquals(17, stringCalculator.add("1,2,6,8"));
         assertEquals(30, stringCalculator.add("1,2,5,4,6,8,4"));
+    }
 
+    @Test
+    void testStringWithNewlineAsSeparator(){
+        assertEquals(6, stringCalculator.add("1\n2,3"));
     }
 }
