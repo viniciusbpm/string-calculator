@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 public class StringCalculatorTest {
     StringCalculator stringCalculator;
@@ -35,5 +36,10 @@ public class StringCalculatorTest {
     @Test
     void testStringWithNewlineAsSeparator(){
         assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
+
+    @Test
+    void testStringWithInvalidUseOfSeparators(){
+        assertThrowsExactly(IllegalArgumentException.class, () -> stringCalculator.add("175.2,\n35"));
     }
 }
