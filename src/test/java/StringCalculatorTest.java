@@ -12,6 +12,11 @@ public class StringCalculatorTest {
     }
     @Test
     void testEmptyString(){
-        assertEquals(0, stringCalculator.getOutput(""));
+        assertEquals(0, stringCalculator.add(""));
+    }
+
+    @Test
+    void testStringHasOnlyOneValue(){
+        assertEquals(1, stringCalculator.add("1"));
     }
 }
