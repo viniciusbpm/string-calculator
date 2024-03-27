@@ -46,5 +46,6 @@ public class StringCalculatorTest {
     @Test
     void testStringWithCommaAsLastCharacter(){
         assertThrowsExactly(IllegalArgumentException.class, () -> stringCalculator.add("1,2,"));
+        assertThrowsExactly(IllegalArgumentException.class, () -> stringCalculator.add("1,2\n"));
     }
 }
