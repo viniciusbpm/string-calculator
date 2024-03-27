@@ -4,13 +4,22 @@ import static java.util.Arrays.stream;
 import static utils.RegularExpressionMatch.getValueSubstringFromRegularExpression;
 
 public class StringCalculator {
+    private String delimiters = ",\\n";
     public double add(String input){
         throwExceptionIfIllegalUseOfSeparators(input);
         throwExceptionIfLastCharacterIsNotANumber(input);
-        return stream(input.split("[,\\n]"))
-                .filter(value -> !value.isBlank())
+        checkAndAddIfInputHasCustomDelimiter(input);
+        return stream(input.split("[" + delimiters + "]"))
+                .filter(value -> value.matches("\\d"))
                 .mapToDouble(Double::parseDouble)
                 .sum();
+    }
+
+    private void checkAndAddIfInputHasCustomDelimiter(String input) {
+        String customDelimiter = getValueSubstringFromRegularExpression(input, "(?<=\\/\\/).");
+        if(!customDelimiter.isBlank()){
+            delimiters += customDelimiter;
+        }
     }
 
     private void throwExceptionIfLastCharacterIsNotANumber(String input) {

@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -44,8 +43,14 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void testStringWithCommaAsLastCharacter(){
+    void testStringWithSeparatorAsLastCharacter(){
         assertThrowsExactly(IllegalArgumentException.class, () -> stringCalculator.add("1,2,"));
         assertThrowsExactly(IllegalArgumentException.class, () -> stringCalculator.add("1,2\n"));
+    }
+
+    @Test
+    void testStringWithCustomSeparator(){
+        assertEquals(3, stringCalculator.add("//;\n1;2"));
+        assertEquals(6, stringCalculator.add("//|\n1|2|3"));
     }
 }
