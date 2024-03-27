@@ -24,7 +24,7 @@ public class StringCalculator {
 
     private void throwExceptionIfLastCharacterIsNotANumber(String input) {
         String lastNumericCharacter = getValueSubstringFromRegularExpression(input, "[\\d]\\z");
-        if(lastNumericCharacter.isBlank()){
+        if(lastNumericCharacter.isBlank() && !input.isBlank()){
             throw new IllegalArgumentException("Number expected but EOF found");
         }
     }
