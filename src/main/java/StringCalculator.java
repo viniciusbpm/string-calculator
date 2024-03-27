@@ -6,11 +6,18 @@ import static utils.RegularExpressionMatch.getValueSubstringFromRegularExpressio
 public class StringCalculator {
     public double add(String input){
         throwExceptionIfIllegalUseOfSeparators(input);
-
+        throwExceptionIfLastCharacterIsNotANumber(input);
         return stream(input.split("[,\\n]"))
                 .filter(value -> !value.isBlank())
                 .mapToDouble(Double::parseDouble)
                 .sum();
+    }
+
+    private void throwExceptionIfLastCharacterIsNotANumber(String input) {
+        String illegalSubstring = getValueSubstringFromRegularExpression(input, "[,\\n]\\z");
+        if(!illegalSubstring.isBlank()){
+            throw new IllegalArgumentException("Number expected but EOF found");
+        }
     }
 
     private void throwExceptionIfIllegalUseOfSeparators(String input) {

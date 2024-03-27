@@ -42,4 +42,9 @@ public class StringCalculatorTest {
     void testStringWithInvalidUseOfSeparators(){
         assertThrowsExactly(IllegalArgumentException.class, () -> stringCalculator.add("175.2,\n35"));
     }
+
+    @Test
+    void testStringWithCommaAsLastCharacter(){
+        assertThrowsExactly(IllegalArgumentException.class, () -> stringCalculator.add("1,2,"));
+    }
 }
