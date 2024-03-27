@@ -24,4 +24,12 @@ public class StringCalculatorTest {
     void testStringHasTwoValues(){
         assertEquals(3, stringCalculator.add("1,2"));
     }
+
+    @Test
+    void testStringHasUnknownAmoutOfValues(){
+        assertEquals(26, stringCalculator.add("1,2,5,4,6,8"));
+        assertEquals(17, stringCalculator.add("1,2,6,8"));
+        assertEquals(30, stringCalculator.add("1,2,5,4,6,8,4"));
+
+    }
 }

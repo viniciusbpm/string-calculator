@@ -1,6 +1,3 @@
-import java.util.Arrays;
-
-import static java.lang.Double.parseDouble;
 import static java.util.Arrays.stream;
 
 public class StringCalculator {
