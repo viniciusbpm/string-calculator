@@ -6,6 +6,12 @@ public class StringCalculator {
             return 0;
         }
 
-        return parseDouble(input);
+        double sum = 0;
+
+        for(String value : input.split(",")){
+            sum += parseDouble(value);
+        }
+
+        return sum;
     }
 }

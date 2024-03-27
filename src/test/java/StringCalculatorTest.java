@@ -19,4 +19,9 @@ public class StringCalculatorTest {
     void testStringHasOnlyOneValue(){
         assertEquals(1, stringCalculator.add("1"));
     }
+
+    @Test
+    void testStringHasTwoValues(){
+        assertEquals(3, stringCalculator.add("1,2"));
+    }
 }
